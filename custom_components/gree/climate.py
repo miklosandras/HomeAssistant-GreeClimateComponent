@@ -178,7 +178,7 @@ class GreeClimate(ClimateEntity):
         else:
             self._uid = 0
         
-        self._acOptions = { 'Pow': None, 'Mod': None, 'SetTem': None, 'WdSpd': None, 'Air': None, 'Blo': None, 'Health': None, 'SwhSlp': None, 'Lig': None, 'SwingLfRig': None, 'SwUpDn': None, 'Quiet': None, 'Tur': None, 'StHt': None, 'TemUn': None, 'HeatCoolType': None, 'TemRec': None, 'SvSt': None, 'SlpMod': None }
+        self._acOptions = { 'Pow': None, 'Mod': None, 'SetTem': None, 'WdSpd': None, 'Air': None, 'Blo': None, 'Health': None, 'SwhSlp': None, 'Lig': None, 'SwingLfRig': None, 'SwUpDn': None, 'Quiet': None, 'Tur': None, 'StHt': None, 'TemUn': None, 'HeatCoolType': None, 'TemRec': None, 'SvSt': None, 'SlpMod': None, 'TemSen': None }
 
         self._firstTimeRun = True
 
@@ -440,8 +440,10 @@ class GreeClimate(ClimateEntity):
         #Fetch current settings from HVAC
         _LOGGER.info('Starting SyncState')
 
-        optionsToFetch = ["Pow","Mod","SetTem","WdSpd","Air","Blo","Health","SwhSlp","Lig","SwingLfRig","SwUpDn","Quiet","Tur","StHt","TemUn","HeatCoolType","TemRec","SvSt","SlpMod"]
+        optionsToFetch = ["Pow","Mod","SetTem","WdSpd","Air","Blo","Health","SwhSlp","Lig","SwingLfRig","SwUpDn","Quiet","Tur","StHt","TemUn","HeatCoolType","TemRec","SvSt","SlpMod","TemSen"]
         currentValues = self.GreeGetValues(optionsToFetch)
+
+        _LOGGER.info('CurrentValues:' + String(currentValues))
 
         # Set latest status from device
         self._acOptions = self.SetAcOptions(self._acOptions, optionsToFetch, currentValues)
