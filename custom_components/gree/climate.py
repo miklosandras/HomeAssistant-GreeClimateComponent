@@ -443,7 +443,7 @@ class GreeClimate(ClimateEntity):
         optionsToFetch = ["Pow","Mod","SetTem","WdSpd","Air","Blo","Health","SwhSlp","Lig","SwingLfRig","SwUpDn","Quiet","Tur","StHt","TemUn","HeatCoolType","TemRec","SvSt","SlpMod","TemSen"]
         currentValues = self.GreeGetValues(optionsToFetch)
 
-        _LOGGER.info('CurrentValues:' + String(currentValues))
+        _LOGGER.info('CurrentValues:' + str(currentValues))
 
         # Set latest status from device
         self._acOptions = self.SetAcOptions(self._acOptions, optionsToFetch, currentValues)
